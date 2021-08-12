@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Docker WebApp</title>
+    </head>
+<style>
+ body{
+         
+          font-size:30px;
+          margin:auto;
+          text-align:center;
+          background-image: url('web1.jpg');
+    }
+    
+    h1 {color:white;
+         }
+    #d{
+                font-weight: bold;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+            }
+    #e{
+                font-weight: bold;
+                font-size: 20px;
+                text-align: center;
+                color: black;
+    }
+    input[type=text], select, textarea {
+    width: 50%;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+
+}
+    </style>
+    <h1>Docker WebApp </h1>
+   <p id="d">Enter the Docker command </p>
+      
+  <script>
+    function lw()
+    {  
+        var i = document.getElementById("in1").value	
+        var xhr= new XMLHttpRequest();
+        xhr.open("GET","http://192.168.43.187/cgi-bin/docker.py?x="+i,true);
+        xhr.send();
+        xhr.onload=function(){
+              var output=xhr.responseText;
+        document.getElementById("d1").innerHTML=output; 
+              }
+    }
+    </script>
+    <div id = "e">
+      [root@localhost~]#<input id="in1" type="text"/>
+      <pre>
+        <button id="d2" onclick="lw()">Submit</button>
+        <div id="d1"> here we have output</div>
+      </pre>
+   </div>
+  </html>  
+    
